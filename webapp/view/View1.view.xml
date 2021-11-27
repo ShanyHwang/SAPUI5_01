@@ -1,0 +1,73 @@
+<mvc:View
+    controllerName="iitp.zui52415.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+
+                        <ComboBox items="{/data}" selectionChange="onCarrier3" id="idCombo">
+                            <items>
+                                <core:Item key="{carrier/carrId}" text="{carrier/carrName}"></core:Item>
+                            </items>
+                        </ComboBox>
+
+                        <Table headerText="Carriers" items="{/data}" mode="SingleSelectMaster" selectionChange="onCarrier" >
+                            <columns>
+                                <Column ><header><Text text="carrId"></Text></header></Column>
+                                <Column ><header><Text text="carrier"></Text></header></Column>
+                                <Column ><header><Text text="currCode"></Text></header></Column>
+                                <Column ><header><Text text="url"></Text></header></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{carrier/carrId}"></Text>
+                                        <Text text="{carrier/carrName}"></Text>
+                                        <Text text="{carrier/currCode}"></Text>
+                                        <Text text="{carrier/url}"></Text>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                         <Table headerText="Flight connections" items="{connections}" id="idConnTable" mode="SingleSelectMaster" selectionChange="onCarrier2" >
+                            <columns>
+                                <Column ><header><Text text="Connection ID"></Text></header></Column>
+                                <Column ><header><Text text="City from"></Text></header></Column>
+                                <Column ><header><Text text="City to"></Text></header></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{connId}"></Text>
+                                        <Text text="{cityFrom}"></Text>
+                                        <Text text="{cityTo}"></Text>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <Panel expandable="true" id="idPanel" width="50%" headerText="More Details" backgroundDesign="Solid">
+                            <Text text="Connection ID : {connId} City from : {cityFrom} City To : {cityTo} Stopover : {stopover}"></Text>
+                            <!-- <Label text="Connection ID"></Label>
+                            <Input editable="false" value="{connId}"></Input>
+                            <Label text="City from"></Label>
+                            <Input editable="false" value="{cityFrom}"></Input>
+                            <Label text="City To"></Label>
+                            <Input editable="false" value="{cityTo}"></Input>
+                            <Label text="stopover"></Label>
+                            <Input editable="false" value="{stopover}"></Input> -->
+                        </Panel>
+                        
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
